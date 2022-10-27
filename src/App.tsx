@@ -12,7 +12,7 @@ function App() {
     }
 
     function onAddNote(text: string) {
-        dispatch({ type: 'ADD_NOTES', payload: { text } });
+        dispatch({ type: 'ADD_NOTE', payload: { taskId: '', text } });
     }
 
     function onDelete(id: string) {

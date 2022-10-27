@@ -1,11 +1,11 @@
 export interface Task {
     id: string;
     title: string;
+    notes?: Note[];
 }
 
 export interface Note {
     id: string;
-    // // taskId: string;
     text: string;
 }
 
@@ -37,8 +37,9 @@ interface AddTask {
 }
 
 interface AddNotes {
-    type: 'ADD_NOTES';
+    type: 'ADD_NOTE';
     payload: {
+        taskId: string;
         text: string;
     };
 }

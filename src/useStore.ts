@@ -18,7 +18,7 @@ export function reducer(state: State, action: Actions): State {
             };
         }
 
-        case 'ADD_NOTES': {
+        case 'ADD_NOTE': {
             const id = uuidv4();
             return {
                 ...state,

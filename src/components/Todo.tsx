@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Note, Task } from '../types';
-import AddNote from './AddNote';
+
 import SingleTask from './SingleTask';
 
 type Props = {
@@ -15,6 +15,7 @@ function Todo({ tasks, notes, onAddNote, onDelete }: Props) {
         <>
             {tasks.map((item) => (
                 <SingleTask
+                    key={item.id}
                     notes={notes}
                     item={item}
                     onAddNote={onAddNote}

@@ -19,6 +19,7 @@ function AddNote({ notes, onAddNote }: Props) {
         <>
             {notes.map((item) => (
                 <div key={item.id}>
+                    <p>{item.id}</p>
                     <p>{item.text}</p>
                 </div>
             ))}
