@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Note, Task } from '../types';
+import { Note } from '../types';
 import AddNote from './AddNote';
 
 type Props = {
