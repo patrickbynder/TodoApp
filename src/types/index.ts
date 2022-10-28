@@ -18,7 +18,12 @@ export type LoginAction =
     | { type: 'login' | 'succes' | 'error' | 'logOut' }
     | { type: 'field'; fieldName: string; payload: string };
 
-export type Actions = AddTask | AddNotes | DeleteTask | ChangeFinished;
+export type Actions =
+    | AddTask
+    | AddNotes
+    | DeleteTask
+    | ChangeFinished
+    | EditTask;
 
 interface AddTask {
     type: 'ADD_TASK';
@@ -50,5 +55,14 @@ interface ChangeFinished {
     };
 }
 
+interface EditTask {
+    type: 'EDIT_TASK';
+    payload: {
+        editTitle: string;
+        taskId: string;
+    };
+}
+
 export type OnAddNote = (value: string, taskId: string) => void;
 export type HandleOnChange = (value: boolean, taskId: string) => void;
+export type OnEditTitle = (value: string, taskID: string) => void;
