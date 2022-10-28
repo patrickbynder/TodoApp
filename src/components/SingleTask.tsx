@@ -1,32 +1,48 @@
-import React, { useState } from 'react';
-import { Note } from '../types';
+import React, { useEffect, useState } from 'react';
+import { HandleOnChange, Note, OnAddNote, Task } from '../types';
 import AddNote from './AddNote';
+import AddTasks from './AddTasks';
+import Notes from './Notes';
 
 type Props = {
-    notes: Note[];
-    onDelete: (value: string) => void;
-    onAddNote: (value: string) => void;
-    item: any;
+    onDelete: (taskId: string) => void;
+    onAddNote: OnAddNote;
+    task: Task;
+    handleOnChange: HandleOnChange;
 };
 
 export default function SingleTask({
-    // tasks,
-    notes,
     onAddNote,
-    item,
+    task,
     onDelete,
+    handleOnChange,
 }: Props) {
     const [showInput, setShowInput] = useState(false);
     const onClick = () => setShowInput(true);
-    return (
-        <div key={item.id}>
-            <h4>{item.title}</h4>
-            {showInput ? <AddNote notes={notes} onAddNote={onAddNote} /> : null}
-            <p>{item.id}</p>
 
-            <button onClick={() => onDelete(item.id)}>Delete Task</button>
+    useEffect(() => {
+        console.log({ task });
+    }, [task]);
+
+    return (
+        <div key={task.id}>
+            <h4>{task.title}</h4>
+            <Notes notes={task.notes} />
+            {showInput ? (
+                <AddNote onAddNote={onAddNote} taskId={task.id} />
+            ) : null}
+            <p>{task.id}</p>
+
+            <button onClick={() => onDelete(task.id)}>Delete Task</button>
 
             <button onClick={onClick}>Add Note</button>
+            <input
+                type="checkbox"
+                checked={task.done}
+                onChange={(event) => {
+                    handleOnChange(!task.done, task.id);
+                }}
+            />
         </div>
     );
 }

@@ -1,7 +1,8 @@
 export interface Task {
     id: string;
     title: string;
-    notes?: Note[];
+    done: boolean;
+    notes: Note[];
 }
 
 export interface Note {
@@ -9,25 +10,15 @@ export interface Note {
     text: string;
 }
 
-export interface LoginState {
-    username: string;
-    password: string;
-    isLoading: boolean;
-    error: string;
-    isLoggedIn: boolean;
-    variant: 'login' | 'forgetPassword';
-}
-
 export interface State {
     tasks: Task[];
-    notes: Note[];
 }
 
 export type LoginAction =
     | { type: 'login' | 'succes' | 'error' | 'logOut' }
     | { type: 'field'; fieldName: string; payload: string };
 
-export type Actions = AddTask | AddNotes | DeleteTask;
+export type Actions = AddTask | AddNotes | DeleteTask | ChangeFinished;
 
 interface AddTask {
     type: 'ADD_TASK';
@@ -50,3 +41,14 @@ interface DeleteTask {
         id: string;
     };
 }
+
+interface ChangeFinished {
+    type: 'CHANGE_FINISHED';
+    payload: {
+        done: boolean;
+        taskId: string;
+    };
+}
+
+export type OnAddNote = (value: string, taskId: string) => void;
+export type HandleOnChange = (value: boolean, taskId: string) => void;
