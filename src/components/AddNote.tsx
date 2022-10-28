@@ -1,29 +1,22 @@
 import React, { useState } from 'react';
-import { Note } from '../types';
+import { OnAddNote } from '../types';
 
 type Props = {
-    onAddNote: (value: string) => void;
-    notes: Note[];
+    onAddNote: OnAddNote;
+    taskId: string;
 };
 
-function AddNote({ notes, onAddNote }: Props) {
+function AddNote({ onAddNote, taskId }: Props) {
     const [note, setNote] = useState('');
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        onAddNote(note);
+        onAddNote(note, taskId);
         console.log(note);
     };
 
     return (
         <>
-            {notes.map((item) => (
-                <div key={item.id}>
-                    <p>{item.id}</p>
-                    <p>{item.text}</p>
-                </div>
-            ))}
-
             <div>
                 <form onSubmit={handleSubmit}>
                     <input
@@ -31,7 +24,7 @@ function AddNote({ notes, onAddNote }: Props) {
                         value={note}
                         onChange={(e) => setNote(e.target.value)}
                     />
-                    <button> Add Task </button>
+                    <button> Add Note </button>
                 </form>
             </div>
         </>

@@ -1,25 +1,25 @@
 import React from 'react';
-import { Note, Task } from '../types';
+import { HandleOnChange, Note, OnAddNote, Task } from '../types';
 
 import SingleTask from './SingleTask';
 
 type Props = {
     tasks: Task[];
-    notes: Note[];
     onDelete: (value: string) => void;
-    onAddNote: (value: string) => void;
+    onAddNote: OnAddNote;
+    handleOnChange: HandleOnChange;
 };
 
-function Todo({ tasks, notes, onAddNote, onDelete }: Props) {
+function Todo({ tasks, onAddNote, onDelete, handleOnChange }: Props) {
     return (
         <>
-            {tasks.map((item) => (
+            {tasks.map((task) => (
                 <SingleTask
-                    key={item.id}
-                    notes={notes}
-                    item={item}
+                    key={task.id}
+                    task={task}
                     onAddNote={onAddNote}
                     onDelete={onDelete}
+                    handleOnChange={handleOnChange}
                 />
             ))}
         </>
