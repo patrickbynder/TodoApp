@@ -20,7 +20,7 @@ export default function SingleTask({
     OnEditTitle,
 }: Props) {
     const [showInput, setShowInput] = useState(false);
-    const [taskTitle, setTaskTitle] = useState('');
+    const [taskTitle, setTaskTitle] = useState(task.title);
     const onClick = () => setShowInput(true);
 
     const handleKeyDown = (event: any) => {
@@ -35,7 +35,7 @@ export default function SingleTask({
 
             <span>Edit Task Name </span>
             <input
-                placeholder={task.title}
+                placeholder={taskTitle}
                 value={taskTitle}
                 onChange={(event) => setTaskTitle(event.target.value)}
                 onKeyDown={handleKeyDown}
