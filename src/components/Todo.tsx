@@ -1,5 +1,5 @@
 import React from 'react';
-import { HandleOnChange, Note, OnAddNote, Task } from '../types';
+import { HandleOnChange, Note, OnEditTitle, OnAddNote, Task } from '../types';
 
 import SingleTask from './SingleTask';
 
@@ -8,9 +8,16 @@ type Props = {
     onDelete: (value: string) => void;
     onAddNote: OnAddNote;
     handleOnChange: HandleOnChange;
+    OnEditTitle: OnEditTitle;
 };
 
-function Todo({ tasks, onAddNote, onDelete, handleOnChange }: Props) {
+function Todo({
+    tasks,
+    onAddNote,
+    onDelete,
+    handleOnChange,
+    OnEditTitle,
+}: Props) {
     return (
         <>
             {tasks.map((task) => (
@@ -20,6 +27,7 @@ function Todo({ tasks, onAddNote, onDelete, handleOnChange }: Props) {
                     onAddNote={onAddNote}
                     onDelete={onDelete}
                     handleOnChange={handleOnChange}
+                    OnEditTitle={OnEditTitle}
                 />
             ))}
         </>

@@ -23,6 +23,10 @@ function App() {
         dispatch({ type: 'CHANGE_FINISHED', payload: { done, taskId } });
     }
 
+    function OnEditTitle(editTitle: string, taskId: string) {
+        dispatch({ type: 'EDIT_TASK', payload: { editTitle, taskId } });
+    }
+
     return (
         <>
             <div>
@@ -33,6 +37,7 @@ function App() {
                     onDelete={onDelete}
                     onAddNote={onAddNote}
                     handleOnChange={handleOnChange}
+                    OnEditTitle={OnEditTitle}
                 />
             </div>
         </>

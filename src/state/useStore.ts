@@ -67,6 +67,21 @@ export function reducer(state: State, action: Actions): State {
                 }),
             };
         }
+
+        case 'EDIT_TASK': {
+            return {
+                ...state,
+                tasks: state.tasks.map((task) => {
+                    if (task.id === action.payload.taskId) {
+                        return {
+                            ...task,
+                            title: action.payload.editTitle,
+                        };
+                    }
+                    return task;
+                }),
+            };
+        }
     }
 }
 
