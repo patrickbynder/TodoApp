@@ -11,7 +11,8 @@ export interface Note {
 }
 
 export interface State {
-    tasks: Task[];
+    tasks?: Task[];
+    addTodo: string;
 }
 
 export type LoginAction =

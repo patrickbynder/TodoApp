@@ -1,4 +1,4 @@
-import { Actions, State, Task } from '../types';
+import { Actions, State } from '../types';
 import { v4 as uuidv4 } from 'uuid';
 import { useReducer } from 'react';
 
