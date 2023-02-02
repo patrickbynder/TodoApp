@@ -11,7 +11,8 @@ export interface Note {
 }
 
 export interface State {
-    tasks: Task[];
+    tasks: { [id: string]: Task };
+    taskIds: string[];
 }
 
 export type LoginAction =

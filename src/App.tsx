@@ -6,7 +6,6 @@ import { actions } from './state/slice';
 import { useDispatch, useSelector } from './state/store';
 
 function App() {
-    const { tasks } = useSelector((state) => state.todoapp);
     const dispatch = useDispatch();
     function onAdd(title: string) {
         dispatch(actions.todoAdded(title));
@@ -34,7 +33,6 @@ function App() {
                 <h2>hello world</h2>
                 <AddTasks onAdd={onAdd} />
                 <Todo
-                    tasks={tasks}
                     onDelete={onDelete}
                     onAddNote={onAddNote}
                     handleOnChange={handleOnChange}

@@ -6,14 +6,20 @@ export const todoIsFinished = {
         state: State,
         action: PayloadAction<{ taskId: string; done: boolean }>
     ) => {
-        state.tasks = state.tasks.map((task) => {
-            if (task.id === action.payload.taskId) {
-                return {
-                    ...task,
-                    done: action.payload.done,
-                };
-            }
-            return task;
-        });
+        const finishedTask = {
+            done: action.payload.done,
+        };
+
+        state.tasks[action.payload.taskId].done.valueOf(finishedTask);
+
+        // state.tasks = state.tasks.map((task) => {
+        //     if (task.id === action.payload.taskId) {
+        //         return {
+        //             ...task,
+        //             done: action.payload.done,
+        //         };
+        //     }
+        //     return task;
+        // });
     },
 };
