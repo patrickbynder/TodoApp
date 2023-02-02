@@ -3,7 +3,7 @@ import { State } from '../types';
 import { todoReducers } from './reducers';
 
 const initialState: State = {
-    addTodo: '',
+    tasks: [],
 };
 
 export const todoSlice = createSlice({
@@ -17,3 +17,4 @@ export const todoSlice = createSlice({
 // Action creators are generated for each case reducer function
 
 export default todoSlice.reducer;
+export const { actions } = todoSlice;

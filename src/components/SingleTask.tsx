@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { HandleOnChange, Note, OnAddNote, OnEditTitle, Task } from '../types';
+import React, { useState } from 'react';
+import { HandleOnChange, OnAddNote, OnEditTitle, Task } from '../types';
 import AddNote from './AddNote';
-import AddTasks from './AddTasks';
 import Notes from './Notes';
 
 type Props = {

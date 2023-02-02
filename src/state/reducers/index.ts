@@ -1,5 +1,13 @@
-import { addTodo } from './addTodo';
+import { noteAddedToTask } from './noteAddedToTask';
+import { taskIsDeleted } from './taskIsDeleted';
+import { taskNameEdited } from './taskNameEdited';
+import { todoAdded } from './todoAdded';
+import { todoIsFinished } from './todoIsFinished';
 
 export const todoReducers = {
-    ...addTodo,
+    ...todoAdded,
+    ...noteAddedToTask,
+    ...taskIsDeleted,
+    ...todoIsFinished,
+    ...taskNameEdited,
 };

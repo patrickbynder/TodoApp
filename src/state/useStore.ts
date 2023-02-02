@@ -84,12 +84,3 @@ export function reducer(state: State, action: Actions): State {
         }
     }
 }
-
-const initialState: State = {
-    tasks: [],
-};
-
-export function useStore() {
-    const [state, dispatch] = useReducer(reducer, initialState);
-    return { tasks: state.tasks, dispatch };
-}
