@@ -12,7 +12,6 @@ function AddNote({ onAddNote, taskId }: Props) {
     const handleSubmit = (e: any) => {
         e.preventDefault();
         onAddNote(note, taskId);
-        console.log(note);
     };
 
     return (
