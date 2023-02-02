@@ -1,5 +1,5 @@
 import React from 'react';
-import { HandleOnChange, Note, OnEditTitle, OnAddNote, Task } from '../types';
+import { HandleOnChange, OnEditTitle, OnAddNote, Task } from '../types';
 
 import SingleTask from './SingleTask';
 

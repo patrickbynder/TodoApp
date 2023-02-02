@@ -2,29 +2,30 @@ import React from 'react';
 import './App.css';
 import AddTasks from './components/AddTasks';
 import Todo from './components/Todo';
-import { useStore } from './state/useStore';
+import { actions } from './state/slice';
+import { useDispatch, useSelector } from './state/store';
 
 function App() {
-    const { tasks, dispatch } = useStore();
-
+    const { tasks } = useSelector((state) => state.todoapp);
+    const dispatch = useDispatch();
     function onAdd(title: string) {
-        dispatch({ type: 'ADD_TASK', payload: { title } });
+        dispatch(actions.todoAdded(title));
     }
 
     function onAddNote(text: string, taskId: string) {
-        dispatch({ type: 'ADD_NOTE', payload: { taskId, text } });
+        dispatch(actions.noteAddedToTask({ text, taskId }));
     }
 
     function onDelete(id: string) {
-        dispatch({ type: 'DELETE_TASK', payload: { id } });
+        dispatch(actions.taskIsDeleted({ taskId: id }));
     }
 
     function handleOnChange(done: boolean, taskId: string) {
-        dispatch({ type: 'CHANGE_FINISHED', payload: { done, taskId } });
+        dispatch(actions.todoIsFinished({ done, taskId }));
     }
 
     function OnEditTitle(editTitle: string, taskId: string) {
-        dispatch({ type: 'EDIT_TASK', payload: { editTitle, taskId } });
+        dispatch(actions.taskNameEdited({ editTitle, taskId }));
     }
 
     return (
