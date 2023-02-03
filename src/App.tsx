@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import './App.css';
 import AddTasks from './components/AddTasks';
 import { Container } from './components/Container';
@@ -6,15 +6,10 @@ import Header from './components/Header';
 import Todo from './components/Todo';
 import { actions } from './state/slice';
 import { useDispatch } from './state/store';
-
-const ThemeContext = createContext<string>('');
+import { ThemeContext } from './themeProvider';
 
 function App() {
-    const [theme, setTheme] = useState('dark');
-
-    const toggleTheme = () => {
-        theme === 'dark' ? setTheme('light') : setTheme('dark');
-    };
+    const { theme } = useContext(ThemeContext);
 
     useEffect(() => {
         document.body.className = theme;
@@ -41,22 +36,21 @@ function App() {
         dispatch(actions.taskNameEdited({ editTitle, taskId }));
     }
 
-    console.log(theme);
-
     return (
-        <ThemeContext.Provider value="dark">
-            <Container>
-                <Header toggleTheme={toggleTheme} />
-                <h2>hello world</h2>
-                <AddTasks onAdd={onAdd} />
-                <Todo
-                    onDelete={onDelete}
-                    onAddNote={onAddNote}
-                    handleOnChange={handleOnChange}
-                    OnEditTitle={OnEditTitle}
-                />
-            </Container>
-        </ThemeContext.Provider>
+        <Container>
+            <h2>test</h2>
+            <Header />
+            <h1>
+                Manage everything you need <span>ToDo</span>
+            </h1>
+            <AddTasks onAdd={onAdd} />
+            <Todo
+                onDelete={onDelete}
+                onAddNote={onAddNote}
+                handleOnChange={handleOnChange}
+                OnEditTitle={OnEditTitle}
+            />
+        </Container>
     );
 }
 

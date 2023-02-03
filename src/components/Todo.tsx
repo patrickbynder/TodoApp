@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from '../state/store';
-import { HandleOnChange, OnEditTitle, OnAddNote, Task } from '../types';
+import { HandleOnChange, OnEditTitle, OnAddNote } from '../types';
 
 import SingleTask from './SingleTask';
 

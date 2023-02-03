@@ -30,7 +30,7 @@ export default function SingleTask({
 
     return (
         <div key={task.id}>
-            <h4>{task.title}</h4>
+            <h2>{task.title}</h2>
 
             <span>Edit Task Name </span>
             <input

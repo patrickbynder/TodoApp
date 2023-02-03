@@ -1,15 +1,23 @@
-import React from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
+
+import { ThemeContext, useTheme } from '../themeProvider';
 import { StyledButton } from './StyledButton';
 
-interface Props {
-    toggleTheme: () => void;
-}
+const Header = () => {
+    const { theme } = useContext(ThemeContext);
+    const { setTheme } = useTheme();
 
-const Header = ({ toggleTheme }: Props) => {
     return (
         <HeaderWrapper>
-            <StyledButton onClick={toggleTheme}>Toggle Theme</StyledButton>
+            <StyledButton
+                onClick={() => {
+                    theme === 'dark' ? setTheme('light') : setTheme('dark');
+                }}
+                theme={theme}
+            >
+                <>Current theme: {theme}</>
+            </StyledButton>
         </HeaderWrapper>
     );
 };
