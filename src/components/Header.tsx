@@ -1,29 +1,36 @@
-import { useContext } from "react";
-import styled from "styled-components";
+import { useContext } from 'react';
+import styled from 'styled-components';
 
-import { useTheme } from "../themeProvider";
-import { StyledButton } from "./StyledButton";
+import { Button } from './Button';
+import { useTheme } from './ThemeProvider';
 
 const Header = () => {
-  // const { theme } = useContext(ThemeContext);
-  const { theme, setTheme } = useTheme();
+    // const { theme } = useContext(ThemeContext);
+    const { theme, setTheme, borderRadius, newBorderRadius } = useTheme();
 
-  return (
-    <HeaderWrapper>
-      <StyledButton
-        onClick={() => {
-          theme === "dark" ? setTheme("light") : setTheme("dark");
-        }}
-        theme={theme}
-      >
-        <>Current theme: {theme}</>
-      </StyledButton>
-    </HeaderWrapper>
-  );
+    return (
+        <HeaderWrapper>
+            <Button
+                onClick={() => {
+                    newBorderRadius(100);
+                }}
+            >
+                Change border Radius
+            </Button>
+
+            <Button
+                onClick={() => {
+                    theme === 'dark' ? setTheme('light') : setTheme('dark');
+                }}
+            >
+                <>Current theme: {theme}</>
+            </Button>
+        </HeaderWrapper>
+    );
 };
 
 export const HeaderWrapper = styled.div`
-  flex: 1 100%;
+    flex: 1 100%;
 `;
 
 export default Header;
