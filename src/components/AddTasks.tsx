@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { StyledButton } from './StyledButton';
 
 type Props = { onAdd: (value: string) => void };
 
@@ -17,7 +18,7 @@ function AddTasks({ onAdd }: Props) {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
-                <button> Add Task </button>
+                <StyledButton theme> Add Task </StyledButton>
             </form>
         </div>
     );

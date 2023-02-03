@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import './App.css';
 import AddTasks from './components/AddTasks';
+import { Container } from './components/Container';
+import Header from './components/Header';
 import Todo from './components/Todo';
 import { actions } from './state/slice';
-import { useDispatch, useSelector } from './state/store';
+import { useDispatch } from './state/store';
+
+const ThemeContext = createContext<string>('');
 
 function App() {
+    const [theme, setTheme] = useState('dark');
+
+    const toggleTheme = () => {
+        theme === 'dark' ? setTheme('light') : setTheme('dark');
+    };
+
+    useEffect(() => {
+        document.body.className = theme;
+    }, [theme]);
+
     const dispatch = useDispatch();
     function onAdd(title: string) {
         dispatch(actions.todoAdded(title));
@@ -27,9 +41,12 @@ function App() {
         dispatch(actions.taskNameEdited({ editTitle, taskId }));
     }
 
+    console.log(theme);
+
     return (
-        <>
-            <div>
+        <ThemeContext.Provider value="dark">
+            <Container>
+                <Header toggleTheme={toggleTheme} />
                 <h2>hello world</h2>
                 <AddTasks onAdd={onAdd} />
                 <Todo
@@ -38,8 +55,8 @@ function App() {
                     handleOnChange={handleOnChange}
                     OnEditTitle={OnEditTitle}
                 />
-            </div>
-        </>
+            </Container>
+        </ThemeContext.Provider>
     );
 }
 
