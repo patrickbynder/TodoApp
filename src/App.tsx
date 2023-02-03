@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import './App.css';
 import AddTasks from './components/AddTasks';
+import { Container } from './components/Container';
+import Header from './components/Header';
 import Todo from './components/Todo';
 import { actions } from './state/slice';
-import { useDispatch, useSelector } from './state/store';
+import { useDispatch } from './state/store';
+import { useTheme } from './components/ThemeProvider';
 
 function App() {
+    // const { theme } = useContext(ThemeContext);
+    const { theme } = useTheme();
+
+    useEffect(() => {
+        document.body.className = theme;
+    }, [theme]);
+
     const dispatch = useDispatch();
     function onAdd(title: string) {
         dispatch(actions.todoAdded(title));
@@ -28,18 +38,20 @@ function App() {
     }
 
     return (
-        <>
-            <div>
-                <h2>hello world</h2>
-                <AddTasks onAdd={onAdd} />
-                <Todo
-                    onDelete={onDelete}
-                    onAddNote={onAddNote}
-                    handleOnChange={handleOnChange}
-                    OnEditTitle={OnEditTitle}
-                />
-            </div>
-        </>
+        <Container>
+            <h2>test</h2>
+            <Header />
+            <h1>
+                Manage everything you need <span>ToDo</span>
+            </h1>
+            <AddTasks onAdd={onAdd} />
+            <Todo
+                onDelete={onDelete}
+                onAddNote={onAddNote}
+                handleOnChange={handleOnChange}
+                OnEditTitle={OnEditTitle}
+            />
+        </Container>
     );
 }
 
