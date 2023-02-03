@@ -6,12 +6,12 @@ export const todoAdded = {
     todoAdded: (state: State, action: PayloadAction<string>) => {
         const id = uuidv4();
         const newTask: Task = {
-            id: id,
+            id,
             title: action.payload,
             notes: [],
             done: false,
         };
-        // When addtodo is called, a new todo will be added to tasks.
-        state.tasks.push(newTask);
+        state.tasks[id] = newTask;
+        state.taskIds.push(newTask.id);
     },
 };

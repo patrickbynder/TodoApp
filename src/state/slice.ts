@@ -3,7 +3,8 @@ import { State } from '../types';
 import { todoReducers } from './reducers';
 
 const initialState: State = {
-    tasks: [],
+    tasks: {},
+    taskIds: [],
 };
 
 export const todoSlice = createSlice({

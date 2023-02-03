@@ -13,16 +13,10 @@ export const noteAddedToTask = {
         action: PayloadAction<NoteAddedPayload>
     ) => {
         const id = uuidv4();
-        state.tasks = state.tasks.map((task) => {
-            if (task.id === action.payload.taskId) {
-                const newNote: Note = {
-                    id: id,
-                    text: action.payload.text,
-                };
-                task.notes.push(newNote);
-            }
-            return task;
-        });
-        // When newNote is called, a new note will be added to todo.
+        const newNote: Note = {
+            id: id,
+            text: action.payload.text,
+        };
+        state.tasks[action.payload.taskId].notes.push(newNote);
     },
 };

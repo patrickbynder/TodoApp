@@ -6,8 +6,8 @@ export const taskIsDeleted = {
         state: State,
         action: PayloadAction<{ taskId: string }>
     ) => {
-        state.tasks = state.tasks.filter(
-            (task) => task.id !== action.payload.taskId
+        state.taskIds = state.taskIds.filter(
+            (id) => id !== action.payload.taskId
         );
     },
 };
