@@ -11,8 +11,6 @@ export const todoAdded = {
             notes: [],
             done: false,
         };
-        // When addtodo is called, a new todo will be added to tasks.
-        // state.tasks.push(newTask);
         state.tasks[id] = newTask;
         state.taskIds.push(newTask.id);
     },
